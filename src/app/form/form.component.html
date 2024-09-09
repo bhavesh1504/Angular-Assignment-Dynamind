@@ -1,0 +1,60 @@
+<div>
+  <h3>Monthly Revenue Chart</h3>
+
+  <form [formGroup]="chartForm">
+    <div>
+      <label for="january">January Revenue: </label>
+      <input type="text" id="january" formControlName="january" appNumberOnly autocomplete="off">
+      <label class="options" for="januaryColor">Select Color: </label>
+      <select formControlName="januaryColor">
+        <option *ngFor="let color of colors" [value]="color.value">{{ color.name }}</option>
+      </select>
+      <div
+        *ngIf="chartForm.get('january')?.invalid && (chartForm.get('january')?.touched || chartForm.get('january')?.dirty)">
+        <div class="error-msg" *ngIf="chartForm.get('january')?.errors?.['required']">January revenue is required.</div>
+        <div class="error-msg" *ngIf="chartForm.get('january')?.errors?.['range']">January revenue must be between 1000
+          and 10000.</div>
+      </div>
+    </div>
+
+    <div>
+      <label for="february">February Revenue: </label>
+      <input type="text" id="february" formControlName="february" appNumberOnly autocomplete="off">
+      <label class="options" for="februaryColor">Select Color: </label>
+      <select formControlName="februaryColor">
+        <option *ngFor="let color of colors" [value]="color.value">{{ color.name }}</option>
+      </select>
+      <div
+        *ngIf="chartForm.get('february')?.invalid && (chartForm.get('february')?.touched || chartForm.get('february')?.dirty)">
+        <div class="error-msg" *ngIf="chartForm.get('february')?.errors?.['required']">February revenue is required.
+        </div>
+        <div class="error-msg" *ngIf="chartForm.get('february')?.errors?.['range']">February revenue must be between
+          1000 and 10000.</div>
+      </div>
+    </div>
+
+    <div>
+      <label for="march">March Revenue: </label>
+      <input type="text" id="march" formControlName="march" appNumberOnly autocomplete="off">
+      <label class="options" for="marchColor">Select Color: </label>
+      <select formControlName="marchColor">
+        <option *ngFor="let color of colors" [value]="color.value">{{ color.name }}</option>
+      </select>
+      <div
+        *ngIf="chartForm.get('march')?.invalid && (chartForm.get('march')?.touched || chartForm.get('march')?.dirty)">
+        <div class="error-msg" *ngIf="chartForm.get('march')?.errors?.['required']">March revenue is required.</div>
+        <div class="error-msg" *ngIf="chartForm.get('march')?.errors?.['range']">March revenue must be between 1000 and
+          10000.</div>
+      </div>
+    </div>
+
+    <div>
+      <label for="chartType">Select Chart Type: </label>
+      <select formControlName="chartType">
+        <option *ngFor="let chartType of chartTypes" [value]="chartType.value">{{ chartType.name }}</option>
+      </select>
+    </div>
+
+    <button type="button" (click)="generateChart()" [disabled]="chartForm.invalid">Generate Chart</button>
+  </form>
+</div>
