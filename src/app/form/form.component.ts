@@ -71,7 +71,7 @@ export class FormComponent implements OnInit {
 
     const chartOptions = {
       chart: {
-        type: 'formValues.chartType'
+        type: formValues.chartType
       },
       title: {
         text: 'Monthly Revenue'
